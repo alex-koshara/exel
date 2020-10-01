@@ -14,17 +14,18 @@ const jsLoaders = () => {
     {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
       }
     }
   ];
 
   if (isDev) {
-    loaders.push('esLint-loader')
+    loaders.push('esLint-loader');
   }
 
   return loaders;
-}
+};
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -58,7 +59,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'src/favicon.ico'),
-        to: path.resolve(__dirname, 'dist') },
+          to: path.resolve(__dirname, 'dist') },
       ],
     }),
     new MiniCssExtractPlugin({
